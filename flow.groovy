@@ -17,7 +17,7 @@ def devQAStaging() {
     })
     stage name: 'Staging', concurrency: 1
     deploy 'target/x.war', 'staging'
-    sh 'breakbuild'
+    // sh 'breakbuild'
 }
 
 def production() {
