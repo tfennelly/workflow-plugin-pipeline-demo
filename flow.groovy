@@ -8,15 +8,15 @@ def devQAStaging() {
     stage 'QA'
 
     parallel(longerTests: {
-        runWithServer {url ->
-            // sh "mvn -o -f sometests/pom.xml test -Durl=${url} -Dduration=30"
-            echo 'Long tests ....'
-        }
+        echo 'Long tests ....'
+        // runWithServer {url ->
+        //     sh "mvn -o -f sometests/pom.xml test -Durl=${url} -Dduration=30"
+        // }
     }, quickerTests: {
-        runWithServer {url ->
-            // sh "mvn -o -f sometests/pom.xml test -Durl=${url} -Dduration=20"
-            echo 'Quicker tests ....'
-        }
+        echo 'Quicker tests ....'
+        // runWithServer {url ->
+        //     sh "mvn -o -f sometests/pom.xml test -Durl=${url} -Dduration=20"
+        // }
     })
     stage name: 'Staging', concurrency: 1
     //deploy 'target/x.war', 'staging'
