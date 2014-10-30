@@ -16,7 +16,8 @@ def devQAStaging() {
         }
     })
     stage name: 'Staging', concurrency: 1
-    deploy 'target/x.war', 'staging'
+    //deploy 'target/x.war', 'staging'
+    echo 'deploy app'
     // sh 'breakbuild'
 }
 
@@ -29,9 +30,9 @@ def production() {
     }
     stage name: 'Production', concurrency: 1
     node('master') {
-        sh 'curl -I http://localhost:8080/staging/'
-        unarchive mapping: ['target/x.war' : 'x.war']
-        deploy 'x.war', 'production'
+        // sh 'curl -I http://localhost:8080/staging/'
+        // unarchive mapping: ['target/x.war' : 'x.war']
+        // deploy 'x.war', 'production'
         echo 'Deployed to http://localhost:8080/production/'
     }
 }
