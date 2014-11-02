@@ -9,6 +9,7 @@ def devQAStaging() {
 
     parallel(longerTests: {
         echo 'Long tests ....'
+        sh 'sleep 60'
         // runWithServer {url ->
         //     sh "mvn -o -f sometests/pom.xml test -Durl=${url} -Dduration=30"
         // }
